@@ -17,15 +17,12 @@ script: #실행할 스크립트(테스트 실행)
 #배포를 위한 추가 사항!!  
 depoly: 
   provider: elasticbeanstalk #외부 서비스 표시(s3, elasticbeanstalk, firebase 등)
-  region: "us-east-2" #현재 사용하고 있는 AWS의 서비스가 위치하고 있는 물리적 장소 
-  app: "docker-react-app" #생성된 애플리케이션 이름
-  env: "Dockerreactapp-env" #
-  bucket_name: elasticbeanstalk-us-east-2-108835263170 #해당 elasticbeanstalk를 위한 s3 버킷 이름. travis CI는 가지고 있는 파일을 s3에 압축해서 보냄. elasticbeanstalk 만들 때 s3는 자동적으로 생성
-  bucket_path: "docker-react-app" #어플리케이션 이름과 동일
+  region: "us-east-1" #현재 사용하고 있는 AWS의 서비스가 위치하고 있는 물리적 장소 
+  app: "docker-react-app-3" #생성된 애플리케이션 이름
+  env: "Dockerreactapp3-env" #
+  bucket_name: elasticbeanstalk-us-east-1-108835263170 #해당 elasticbeanstalk를 위한 s3 버킷 이름. travis CI는 가지고 있는 파일을 s3에 압축해서 보냄. elasticbeanstalk 만들 때 s3는 자동적으로 생성
+  bucket_path: "docker-react-app-3" #어플리케이션 이름과 동일
   on:
     branch: main #어떤 브랜치에 push를 할 때 AWS에 배포할건지
 access_key_id: $AWS_ACCESS_KEY #travis CI에 넣어준 값
 secret_access_key: $AWS_SECRET_ACCESS_KEY #travis CI에 넣어준 값
-
-after_success: #테스트 성공 후 할 일
-  - echo "Test Success"
